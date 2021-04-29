@@ -4,15 +4,15 @@ void setup() {
   colorMode(HSB, 360, 100, 100);
 
   strokeCap(SQUARE);
-
+  
+  noFill();
+  
   smooth();
 }
 
 
 void draw() {
   background(0, 0, 0);
-
-  noFill();
 
   //RGB
 
