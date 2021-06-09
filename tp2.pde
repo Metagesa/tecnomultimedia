@@ -2,7 +2,7 @@
 //-----------------------------Juan Lutz------------------------------------------------
 // Creditos de American Gods (serie): https://www.youtube.com/watch?v=53vRKhygMEY
 
-Font fuenteA, fuenteB;
+PFont fuenteA, fuenteB;
 PImage boton;
 PImage T1, T2, T3, T4, T5, T6, T;
 PImage neon, texto, niebla, estatua, estatua2, candelabro, fondo1, pared, patron, lamp;
