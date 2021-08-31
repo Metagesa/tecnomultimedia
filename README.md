@@ -1,1 +1,3 @@
-# tecnomultimedia
+Pre entrega TP4:
+
+Mi historia se basa en un tp que hice para Leng. Multimedial. Hice un personaje que es un robot de mantenimiento (se llama TL-WN), que en este caso trabaja en un reactor. Mientras está trabajando, hay un problema en el reactor y está a punto de explotar. TL-WN debe decidir qué hacer...
