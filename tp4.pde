@@ -1,3 +1,9 @@
+//Hola profe, entrego este "esqueleto" de TP. Estuve complicado entre medio de otras entregas y no llegué jaja.
+//Armé de todas formas todo el código como para dibujar las pantallas y los void que probablemente voy a necesitar. 
+//Para el recuperatorio solo me queda agregar alguna función que devuelva valores (probablemente un boolean para abrir
+//los créditos, presionar botones o algo por el estilo), y dibujar cada pantalla.
+//Saludos!
+
 PFont fuenteDefault;
 String[] pantalla;
 PImage fondo;
