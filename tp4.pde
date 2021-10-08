@@ -4,7 +4,7 @@
 //Juan Lutz
 //Comisión 2
 //Legajo 88196/6
-//Link a video de YouTube: https://youtu.be/n9LHk4Lv-bY
+//Link a video de YouTube: https://youtu.be/n9LHk4Lv-bY (perdon, me pasé de largo con la duración)
 
 PFont fuenteDefault;
 boolean botonA = false, botonB = false, creditos = false;
