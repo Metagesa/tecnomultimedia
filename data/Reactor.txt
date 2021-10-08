@@ -1,0 +1,3 @@
+TL-WN es un robot de mantenimiento
+Acaba de terminar de limpiar el reactor
+Ahora mismo está por volver a encenderlo
