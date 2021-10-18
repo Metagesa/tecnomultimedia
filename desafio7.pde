@@ -28,9 +28,6 @@ void draw() {
       }
     }
   }
-  println(mun[1].presionado(width/2, height/2, 30));
-  println(mun[1].vidas);
-  println(mun[1].conVida);
 }
 
 void mouseReleased() {
