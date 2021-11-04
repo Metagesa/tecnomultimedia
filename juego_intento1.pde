@@ -1,4 +1,4 @@
-int cant = 1;
+int cant = 10;
 int balas = 0;
 int muertes = 0;
 boolean menu = true;
@@ -15,7 +15,7 @@ void setup() {
   Juan = new Heroe(width/2, height/2);
   fondo = new Mapa();
   for (int i=0; i<cant; i++) {
-    Inaki[i] = new Enemigo(random(width/2.1), random(height/2.1), random(20, 30));
+    Inaki[i] = new Enemigo(random(width/2.1), random(height/2.1), random(40, 60));
   }
   for (int i=0; i<50; i++) {
     bala[i] = new disparo(0, 0);
@@ -31,8 +31,6 @@ void draw() {
   } else {
 
     fondo.draw();
-
-    save("fondo.png");
 
     for (int i=0; i<balas; i++) {
       if (bala[i].municion()) {
@@ -51,7 +49,7 @@ void draw() {
         menu=true;
         Juan = new Heroe(width/2, height/2);
         for (int a=0; a<cant; a++) {
-          Inaki[a] = new Enemigo(random(width/2.1), random(height/2.1), random(20, 30));
+          Inaki[a] = new Enemigo(random(width/2.1), random(height/2.1), random(40, 60));
         }
         for (int a=0; a<50; a++) {
           bala[a] = new disparo(0, 0);
@@ -76,13 +74,68 @@ void draw() {
   println("Balas: "+balas);
   println("Colisión con mouse: "+Juan.colision(mouseX, mouseY, 10));
   println("Angulo: "+Juan.ang);
+  println(fondo.colision(Juan.x, Juan.y, Juan.diam));
+
+  movimientoHeroe();
+}
+
+void movimientoHeroe() {
 
   if (keyPressed) {
+    if (!fondo.colision(Juan.x, Juan.y, Juan.diam)) {
+      if (w) {
+        Juan.mover("arriba");
+      }
+      if (s) {
+        Juan.mover("abajo");
+      }
+      if (d) {
+        Juan.mover("derecha");
+      }
+      if (a) {
+        Juan.mover("izquierda");
+      }
+    } else if (fondo.colision(Juan.x, Juan.y, Juan.diam)) {
+      colHeroe();
+    }
+  }
+}
+
+void colHeroe() {
+
+  if (fondo.tempX<Juan.x) {
+    if (d) {
+      Juan.mover("derecha");
+    }
     if (w) {
       Juan.mover("arriba");
     }
     if (s) {
       Juan.mover("abajo");
+    }
+  } else if (fondo.tempX>Juan.x) {
+    if (a) {
+      Juan.mover("izquierda");
+    }
+    if (w) {
+      Juan.mover("arriba");
+    }
+    if (s) {
+      Juan.mover("abajo");
+    }
+  } else if (fondo.tempY<Juan.y) {
+    if (s) {
+      Juan.mover("abajo");
+    }
+    if (d) {
+      Juan.mover("derecha");
+    }
+    if (a) {
+      Juan.mover("izquierda");
+    }
+  } else if (fondo.tempY>Juan.y) {
+    if (w) {
+      Juan.mover("arriba");
     }
     if (d) {
       Juan.mover("derecha");

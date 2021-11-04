@@ -5,10 +5,14 @@ class Enemigo {
   boolean mX = false, mY = true;
   boolean d = true, V = true;
 
+  PImage mafia;
+
   Enemigo(float posX, float posY, float t) {
     x=posX;
     y=posY;
     tam=t;
+    mafia = loadImage("mafioso_"+int(random(-0.1, 2.1))+".png");
+    mafia.resize(int(tam), int(tam));
   }
 
   void dibujar() {
@@ -17,7 +21,10 @@ class Enemigo {
       V = false;
     }
     if (V) {
-      circle(x, y, tam);
+      push();
+      imageMode(CENTER);
+      image(mafia, x, y);
+      pop();
       mover();
       muertx=x;
       muerty=y;
@@ -25,8 +32,9 @@ class Enemigo {
       x=-200;
       y=-200;
       push();
-      fill(255, 0, 0);
-      circle(muertx, muerty, tam);
+      tint(255, 0, 0);
+      imageMode(CENTER);
+      image(mafia, muertx, muerty);
       pop();
     }
   }
@@ -53,6 +61,13 @@ class Enemigo {
   }
 
   void mover() {
+    if (fondo.colision(x, y, tam/2)) {
+      if (fondo.distX<tam/3) {
+        mX=!mX;
+      } else {
+        mY=!mY;
+      }
+    }
     if (dir()) {
       d = !d;
     }
