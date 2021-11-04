@@ -1,19 +1,21 @@
-int cant = 10;
+int cant = 1;
 int balas = 0;
 int muertes = 0;
 boolean menu = true;
 boolean w = false, a = false, s = false, d = false;
 Heroe Juan;
 disparo[] bala = new disparo[50];
-Enemigo[] Iñaki = new Enemigo[cant];
+Enemigo[] Inaki = new Enemigo[cant];
+Mapa fondo;
 
 void setup() {
   size(800, 600);
   surface.setLocation(displayWidth/2-width/2, displayHeight/2-height/2);
   smooth();
   Juan = new Heroe(width/2, height/2);
+  fondo = new Mapa();
   for (int i=0; i<cant; i++) {
-    Iñaki[i] = new Enemigo(random(width/2.1), random(height/2.1), random(20, 30));
+    Inaki[i] = new Enemigo(random(width/2.1), random(height/2.1), random(20, 30));
   }
   for (int i=0; i<50; i++) {
     bala[i] = new disparo(0, 0);
@@ -28,6 +30,10 @@ void draw() {
     text("Jugar", width/2, height/2);
   } else {
 
+    fondo.draw();
+
+    save("fondo.png");
+
     for (int i=0; i<balas; i++) {
       if (bala[i].municion()) {
         bala[i].dibujar();
@@ -40,12 +46,12 @@ void draw() {
     }
 
     for (int i=0; i<cant; i++) {
-      Iñaki[i].dibujar();
-      if (Juan.colision(Iñaki[i].x, Iñaki[i].y, Iñaki[i].tam/2)) {
+      Inaki[i].dibujar();
+      if (Juan.colision(Inaki[i].x, Inaki[i].y, Inaki[i].tam/2)) {
         menu=true;
         Juan = new Heroe(width/2, height/2);
         for (int a=0; a<cant; a++) {
-          Iñaki[a] = new Enemigo(random(width/2.1), random(height/2.1), random(20, 30));
+          Inaki[a] = new Enemigo(random(width/2.1), random(height/2.1), random(20, 30));
         }
         for (int a=0; a<50; a++) {
           bala[a] = new disparo(0, 0);
@@ -56,7 +62,7 @@ void draw() {
     Juan.dibujar();
 
     for (int i=0; i<cant; i++) {
-      if (!Iñaki[i].V) {
+      if (!Inaki[i].V) {
         muertes++;
       }
     }
