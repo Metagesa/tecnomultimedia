@@ -8,6 +8,7 @@ class Enemigo {
   PImage mafia;
 
   Enemigo(float posX, float posY, float t) {
+    V=true;
     x=posX;
     y=posY;
     tam=t;
@@ -15,9 +16,9 @@ class Enemigo {
     mafia.resize(int(tam), int(tam));
   }
 
-  void dibujar() {
+  void dibujar(Mapa f, disparo[] dis) {
 
-    if (!vivo()) {
+    if (!vivo(dis)) {
       V = false;
     }
     if (V) {
@@ -25,7 +26,7 @@ class Enemigo {
       imageMode(CENTER);
       image(mafia, x, y);
       pop();
-      mover();
+      mover(f);
       muertx=x;
       muerty=y;
     } else {
@@ -39,12 +40,12 @@ class Enemigo {
     }
   }
 
-  boolean vivo() {
-    for (int i=0; i<balas; i++) {
-      boolean[] v = new boolean[balas];
-      if (colision(bala[i].absx, bala[i].absy)) {
+  boolean vivo(disparo[] b) {
+    for (int i=0; i<balasGlobal; i++) {
+      boolean[] v = new boolean[balasGlobal];
+      if (colision(b[i].absx, b[i].absy)) {
         v[i]=false;
-        bala[i].impacto=true;
+        b[i].impacto=true;
         return v[i];
       }
     }
@@ -60,11 +61,12 @@ class Enemigo {
     }
   }
 
-  void mover() {
-    if (fondo.colision(x, y, tam/2)) {
-      if (fondo.distX<tam/3) {
+  void mover(Mapa back) {
+    if (back.colision(x, y, tam/2)) {
+      if (back.distX<tam) {
         mX=!mX;
-      } else {
+      } 
+      if (back.distY<tam) {
         mY=!mY;
       }
     }

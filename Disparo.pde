@@ -10,11 +10,11 @@ class disparo {
     y=py;
   }
 
-  void dibujar() {
+  void dibujar(Heroe J) {
     if (!impacto) {
       x=x-vel;
       pushMatrix();
-      translate(Juan.x, Juan.y);
+      translate(J.x, J.y);
       rotate(map(ang, -PI, PI, 0, TWO_PI));
       circle(x, y, 5);
       absx=screenX(x, y);
@@ -26,8 +26,8 @@ class disparo {
     }
   }
 
-  void actualizar() {
-    ang=(atan2(mouseY-Juan.y, mouseX-Juan.x));
+  void actualizar(Heroe J) {
+    ang=(atan2(mouseY-J.y, mouseX-J.x));
     x=0;
     y=0;
   }
