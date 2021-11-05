@@ -1,3 +1,10 @@
+//------------------TP 5---------------------------
+//------------Tecno Multimedia 1------------------
+//----------------Comision 2----------------------
+//---------Juan Lutz - Nayla Aguilar---------------
+//------Entrega Juan Lutz - Legajo 88196/6--------
+//LINK a video:
+
 Juego tl;
 int balasGlobal = 0;
 
