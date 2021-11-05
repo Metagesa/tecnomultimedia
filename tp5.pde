@@ -3,7 +3,7 @@
 //----------------Comision 2----------------------
 //---------Juan Lutz - Nayla Aguilar---------------
 //------Entrega Juan Lutz - Legajo 88196/6--------
-//LINK a video:
+//LINK a video: https://youtu.be/Rbo77fjxojI
 
 Juego tl;
 int balasGlobal = 0;
