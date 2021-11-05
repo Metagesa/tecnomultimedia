@@ -1,5 +1,5 @@
 class Juego {
-  int cant = 100;
+  int cant = 1;
   int balas = 0;
   int muertes = 0;
   boolean menu = true, ganar = false, perder = false;
@@ -103,6 +103,16 @@ class Juego {
       }
       if (muertes==cant) {
         ganar=true;
+        Juan = new Heroe(width/2, height/2);
+        for (int a=0; a<cant; a++) {
+          Inaki[a] = new Enemigo(random(width), 0, random(40, 60));
+          Inaki[a].mX = (a%2==0);
+          Inaki[a].mY = (a%7==0);
+        }
+        for (int a=0; a<50; a++) {
+          bala[a] = new disparo(0, 0);
+        }
+        muertes=0;
       } else {
         muertes=0;
       }
