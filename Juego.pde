@@ -1,4 +1,5 @@
 class Juego {
+  SoundFile musica1, musica2;
   Pantalla resultado;
   int cant = 50;
   int balas = 0;
@@ -14,7 +15,11 @@ class Juego {
   PImage robotito, robotito2, win, lose;
 
 
-  Juego() {
+  Juego(PApplet a) {
+
+    musica1 = new SoundFile(a, "derrota.wav");
+    musica2 = new SoundFile(a, "victoria.mp3");
+
     victoria = loadStrings("Mafia.txt");
     resultado = new Pantalla("Hola", color(255), 20);
     Juan = new Heroe(width/2, height/2);
@@ -77,6 +82,8 @@ class Juego {
       for (int i=0; i<cant; i++) {
         Inaki[i].dibujar(fondo, bala, this);
         if (Juan.colision(Inaki[i].x, Inaki[i].y, Inaki[i].tam/2)) {
+          musica1.amp(0.1);
+          musica1.play();
           perder=true;
           Juan = new Heroe(width/2, height/2);
           for (int a=0; a<cant; a++) {
@@ -98,6 +105,8 @@ class Juego {
         }
       }
       if (muertes==cant) {
+        musica2.amp(0.1);
+        musica2.play();
         ganar=true;
         Juan = new Heroe(width/2, height/2);
         for (int a=0; a<cant; a++) {

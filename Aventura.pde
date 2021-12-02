@@ -1,4 +1,8 @@
 class Aventura {
+
+  SoundFile laser;
+  SoundFile musica;
+
   Juego J;
   PFont fuenteDefault;
   boolean creditos = false;
@@ -20,11 +24,16 @@ class Aventura {
 
   boolean inicio, B1, B2, B3, B4;
 
-  Aventura() {
+  Aventura(PApplet a) {
+    laser = new SoundFile(a, "disparo.wav");
+    musica = new SoundFile(a, "musica fondo.mp3");
+    musica.amp(0.15);
+    musica.loop();
+
     pantalla = loadStrings("pantallas.txt"); //Tengo las pantallas a utilizar cargadas con Strings para reconocerlas más fácil
     fondo = new Pantalla("Hola", color(255), 24);
 
-    J = new Juego();
+    J = new Juego(a);
 
     for (int i = 0; i<back.length; i++) {
       back[i] = loadImage("Fondo"+i+".png");
@@ -288,7 +297,11 @@ class Aventura {
     } else if (pantalla[numP].equals("Mafia")) {
       push();
       J.draw();
+      if (J.perder) {
+        musica.stop();
+      }
       if (J.ganar) {
+        musica.stop();
         B[0].draw(width/2-width/8, height/15*2, width/5, height/15, color(#251FDE), "Volver al inicio");
       }
       pop();
@@ -357,7 +370,7 @@ class Aventura {
       B[2].draw(width-width/9, height/30, width/14, height/25, color(#251FDE), "Cerrar");
     }
 
-    println(pantalla[numP]);
+    //println(pantalla[numP]);
   }
 
   void cargarTexto() {
@@ -375,11 +388,13 @@ class Aventura {
   }
 
   void mouse() {
-    if (!J.menu) {
+    if (!J.menu && !J.ganar && !J.perder) {
       if (J.balas < 50) {
         J.balas++;
         J.bala[J.balas-1].impacto=false;
         J.bala[J.balas-1].actualizar(J.Juan);
+        laser.amp(0.4);
+        laser.play();
       } else if (J.balas == 50) {
         J.balas=0;
       }
@@ -387,6 +402,8 @@ class Aventura {
     if (J.perder) {
       J.menu=true;
       J.perder=false;
+      J.musica1.stop();
+      musica.play();
     }
 
     if (numP>0) {
@@ -400,6 +417,8 @@ class Aventura {
         numP=0;
         if (J.ganar) {
           J.ganar=false;
+          J.musica2.stop();
+          musica.play();
         }
       }
       if (B2 && B[1].texto.equals("Escapar por la\nventana")) {
