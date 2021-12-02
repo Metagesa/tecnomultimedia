@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 Aventura necesitoUnaMano;
 
 void setup() {
