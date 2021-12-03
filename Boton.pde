@@ -5,7 +5,7 @@ class Boton {
   String ID;
   
   Boton(String id) {
-    ID=id;
+    ID=id; //No se usa, pero serviría para identificar al boton dentro de un array de botones o algo similar
   }
 
   void draw(float posX, float posY, float tamX, float tamY, color colBot, String textoB) {

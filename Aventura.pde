@@ -22,7 +22,7 @@ class Aventura {
   int dial = 0;
   float contador = 0;
 
-  boolean inicio, B1, B2, B3, B4;
+  boolean inicio, B1, B2, B3;
 
   Aventura(PApplet a) {
     laser = new SoundFile(a, "disparo.wav");
@@ -47,7 +47,6 @@ class Aventura {
     B1 = B[0].botonPres(); 
     B2 = B[1].botonPres();
     B3 = B[2].botonPres();
-    B4 = B[3].botonPres();
 
     back[2].resize(0, 600);
 
@@ -99,7 +98,6 @@ class Aventura {
     B1 = B[0].botonPres(); 
     B2 = B[1].botonPres();
     B3 = B[2].botonPres();
-    B4 = B[3].botonPres();
     B[0].draw(-500, -500, 1, 1, color(#251FDE), "a");
     B[1].draw(-500, -500, 1, 1, color(#251FDE), "a");
     B[2].draw(-500, -500, 1, 1, color(#251FDE), "a");
